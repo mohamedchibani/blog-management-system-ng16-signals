@@ -1,0 +1,30 @@
+<div class="row my-5">
+  <div class="col-md-6">
+    <h1>List of courses</h1>
+  </div>
+  <div class="col-md-6 text-end">
+    <div class="input-group mb-3">
+      <input
+        (keyup)="searchMember()"
+        type="search"
+        class="form-control"
+        placeholder="Seach a user"
+        aria-label="Example text with button addon"
+        aria-describedby="button-addon1"
+        [(ngModel)]="search"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="row my-5" *ngIf="users.length">
+  <div class="col-md-4" *ngFor="let user of users">
+    <app-card
+      [login]="user.login"
+      [image]="user.avatar_url"
+      [url]="user.html_url"
+    ></app-card>
+  </div>
+</div>
+
+<div *ngIf="!users.length" class="row my-5 loading">Loading...</div>
