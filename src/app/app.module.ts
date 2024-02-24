@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesModule } from './courses/courses.module';
 import { GithubMembersModule } from './github-members/github-members.module';
+import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { GithubMembersModule } from './github-members/github-members.module';
     BrowserModule,
     AppRoutingModule,
     CoursesModule,
-    GithubMembersModule
+    GithubMembersModule,
+    BlogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
