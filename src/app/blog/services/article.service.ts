@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Article } from '../models/article';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,23 +13,23 @@ export class ArticleService {
 
   http = inject(HttpClient);
 
-  getAll() {
-    return this.http.get(this.apiUrl);
+  getAll(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.apiUrl);
   }
 
-  getOne(id: number) {
-    return this.http.get(`${this.apiUrl}/${id}`);
+  getOne(id: number): Observable<Article> {
+    return this.http.get<Article>(`${this.apiUrl}/${id}`);
   }
 
-  persist(data: Article) {
-    return this.http.post(this.apiUrl, data);
+  persist(data: Article): Observable<Article> {
+    return this.http.post<Article>(this.apiUrl, data);
   }
 
-  update(id: number, data: Article) {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+  update(id: number, data: Article): Observable<Article> {
+    return this.http.put<Article>(`${this.apiUrl}/${id}`, data);
   }
 
-  delete(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  delete(id: number): Observable<Object> {
+    return this.http.delete<Object>(`${this.apiUrl}/${id}`);
   }
 }
