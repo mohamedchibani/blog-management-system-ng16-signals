@@ -1,19 +1,34 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Category } from '../models/category';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
+  apiUrl = 'http://localhost:3000/categories';
+
   constructor() {}
 
-  getAll() {}
+  http = inject(HttpClient);
 
-  getOne(id: number) {}
+  getAll() {
+    return this.http.get(this.apiUrl);
+  }
 
-  persist(data: Category) {}
+  getOne(id: number) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 
-  update(id: number, data: Category) {}
+  persist(data: Category) {
+    return this.http.post(this.apiUrl, data);
+  }
 
-  delete(id: number) {}
+  update(id: number, data: Category) {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

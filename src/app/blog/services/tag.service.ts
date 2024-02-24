@@ -1,19 +1,34 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Tag } from '../models/tag';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TagService {
+  apiUrl = 'http://localhost:3000/tags';
+
   constructor() {}
 
-  getAll() {}
+  http = inject(HttpClient);
 
-  getOne(id: number) {}
+  getAll() {
+    return this.http.get(this.apiUrl);
+  }
 
-  persist(data: Tag) {}
+  getOne(id: number) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 
-  update(id: number, data: Tag) {}
+  persist(data: Tag) {
+    return this.http.post(this.apiUrl, data);
+  }
 
-  delete(id: number) {}
+  update(id: number, data: Tag) {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

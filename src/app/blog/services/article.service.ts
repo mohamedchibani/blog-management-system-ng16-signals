@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Article } from '../models/article';
 import { HttpClient } from '@angular/common/http';
 
@@ -6,25 +6,29 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ArticleService {
-  constructor(private http: HttpClient) {}
+  apiUrl = 'http://localhost:3000/articles';
+
+  //constructor(private http: HttpClient) {}
+
+  http = inject(HttpClient);
 
   getAll() {
-    return this.http.get('http://localhost:3000/articles');
+    return this.http.get(this.apiUrl);
   }
 
   getOne(id: number) {
-    return this.http.get(`http://localhost:3000/articles/${id}`);
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
   persist(data: Article) {
-    return this.http.post('http://localhost:3000/articles', data);
+    return this.http.post(this.apiUrl, data);
   }
 
   update(id: number, data: Article) {
-    return this.http.put(`http://localhost:3000/articles/${id}`, data);
+    return this.http.put(`${this.apiUrl}/${id}`, data);
   }
 
   delete(id: number) {
-    return this.http.delete(`http://localhost:3000/articles/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
