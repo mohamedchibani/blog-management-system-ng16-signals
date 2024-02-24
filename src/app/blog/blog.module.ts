@@ -6,6 +6,8 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { ArticleCreateComponent } from './components/article-create/article-create.component';
 import { ArticleEditComponent } from './components/article-edit/article-edit.component';
 import { ArticleShowComponent } from './components/article-show/article-show.component';
+import { TagsComponent } from './components/tags/tags.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,10 @@ import { ArticleShowComponent } from './components/article-show/article-show.com
     ArticleCreateComponent,
     ArticleEditComponent,
     ArticleShowComponent,
+    TagsComponent,
+    CategoriesComponent,
   ],
   imports: [CommonModule, HttpClientModule],
+  exports: [CategoriesComponent],
 })
 export class BlogModule {}
