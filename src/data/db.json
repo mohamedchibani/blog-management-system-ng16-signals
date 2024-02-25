@@ -2,6 +2,19 @@
   "articles": [],
   "comments": [],
   "users": [],
-  "categories": [],
+  "categories": [
+    {
+      "id": "a529",
+      "label": "Solar Panels"
+    },
+    {
+      "id": "df0a",
+      "label": "Coding"
+    },
+    {
+      "id": "5e03",
+      "label": "Travel"
+    }
+  ],
   "tags": []
 }

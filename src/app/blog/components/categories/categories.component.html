@@ -10,6 +10,10 @@
 <div class="row my-4">
   <div class="col-md-6 mx-auto">
     <input
+      #categoryLabel
+      [value]="label()"
+      (input)="label.set(categoryLabel.value)"
+      (keyup.enter)="add()"
       type="text"
       class="form-control my-3"
       id=""
