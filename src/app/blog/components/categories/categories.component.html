@@ -29,7 +29,13 @@
               (click)="edit(category)"
             >
               Edit</button
-            ><button class="btn btn-sm btn-danger">Delete</button>
+            ><button
+              *ngIf="category.id"
+              class="btn btn-sm btn-danger"
+              (click)="delete(category.id)"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </li>

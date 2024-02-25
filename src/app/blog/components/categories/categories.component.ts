@@ -26,7 +26,7 @@ export class CategoriesComponent implements OnInit {
     };
 
     if (this.id()) {
-      this.update();
+      this.update(category);
     } else {
       this.store(category);
     }
@@ -39,13 +39,10 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  update() {
-    const data: Category = {
-      id: this.id(),
-      label: this.label(),
-    };
+  update(data: Category) {
+    data.id = this.id();
 
-    this.categoryService.update(this.id(), data).subscribe((res) => {
+    this.categoryService.update(data.id, data).subscribe((res) => {
       this.catgories.update((categories) =>
         categories.map((category) =>
           category.id === this.id() ? data : category
@@ -65,5 +62,17 @@ export class CategoriesComponent implements OnInit {
     }
 
     this.label.set(label);
+  }
+
+  delete(id: number) {
+    if (!confirm('Are you sure to delete this item ?')) {
+      return;
+    }
+
+    this.categoryService.delete(id).subscribe((res) => {
+      this.catgories.update((categories) =>
+        categories.filter((category) => category.id !== id)
+      );
+    });
   }
 }
