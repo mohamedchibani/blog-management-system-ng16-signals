@@ -8,16 +8,17 @@ import { Category } from '../../models/category';
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
+  id = signal<number>(0);
+  label = signal('');
+  catgories = signal<Category[]>([]);
+
+  categoryService = inject(CategoryService);
+
   ngOnInit(): void {
     this.categoryService.getAll().subscribe((res) => {
       this.catgories.set(res);
     });
   }
-
-  label = signal('');
-  catgories = signal<Category[]>([]);
-
-  categoryService = inject(CategoryService);
 
   add() {
     const category: Category = {
@@ -28,5 +29,15 @@ export class CategoriesComponent implements OnInit {
       this.label.set('');
       this.catgories.mutate((data) => data.push(res));
     });
+  }
+
+  edit(category: Category) {
+    let { id, label } = category;
+
+    if (id) {
+      this.id.set(id);
+    }
+
+    this.label.set(label);
   }
 }
