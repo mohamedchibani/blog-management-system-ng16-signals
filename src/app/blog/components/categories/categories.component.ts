@@ -20,14 +20,40 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  add() {
+  createOrUpdate() {
     const category: Category = {
       label: this.label(),
     };
 
+    if (this.id()) {
+      this.update();
+    } else {
+      this.store(category);
+    }
+  }
+
+  store(category: Category) {
     this.categoryService.persist(category).subscribe((res) => {
       this.label.set('');
       this.catgories.mutate((data) => data.push(res));
+    });
+  }
+
+  update() {
+    const data: Category = {
+      id: this.id(),
+      label: this.label(),
+    };
+
+    this.categoryService.update(this.id(), data).subscribe((res) => {
+      this.catgories.update((categories) =>
+        categories.map((category) =>
+          category.id === this.id() ? data : category
+        )
+      );
+
+      this.label.set('');
+      this.id.set(0);
     });
   }
 

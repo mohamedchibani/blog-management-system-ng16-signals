@@ -13,7 +13,7 @@
       #categoryLabel
       [value]="label()"
       (input)="label.set(categoryLabel.value)"
-      (keyup.enter)="add()"
+      (keyup.enter)="createOrUpdate()"
       type="text"
       class="form-control my-3"
       id=""
