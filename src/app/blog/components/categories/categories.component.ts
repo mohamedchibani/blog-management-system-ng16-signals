@@ -9,6 +9,7 @@ import { Category } from '../../models/category';
 })
 export class CategoriesComponent implements OnInit {
   id = signal<number>(0);
+  index = signal<number>(-1);
   label = signal('');
   catgories = signal<Category[]>([]);
 
@@ -74,5 +75,9 @@ export class CategoriesComponent implements OnInit {
         categories.filter((category) => category.id !== id)
       );
     });
+  }
+
+  selected(i: number) {
+    this.index.set(i);
   }
 }

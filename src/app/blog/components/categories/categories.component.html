@@ -20,9 +20,16 @@
       placeholder="Add a category"
     />
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let category of catgories()">
+      <li
+        [class.active]="index() == i"
+        class="list-group-item"
+        *ngFor="let category of catgories(); let i = index"
+        (click)="selected(i)"
+      >
         <div class="row">
-          <div class="col mt-2">{{ category.label }}</div>
+          <div class="col mt-2">
+            {{ category.label }}
+          </div>
           <div class="col text-end">
             <button
               class="btn btn-sm btn-warning me-1"
