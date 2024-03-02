@@ -30,6 +30,10 @@
         class="list-group-item"
         *ngFor="let category of catgories(); let i = index"
         (click)="selected(i)"
+        [ngStyle]="{
+          color: index() == i ? 'cyan' : 'black',
+          fontStyle: index() == i ? 'italic' : 'normal',
+        }"
       >
         <div class="row">
           <div class="col mt-2">
