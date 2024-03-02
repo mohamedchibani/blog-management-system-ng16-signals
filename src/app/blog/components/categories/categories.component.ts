@@ -10,6 +10,7 @@ import { Category } from '../../models/category';
 export class CategoriesComponent implements OnInit {
   id = signal<number>(0);
   index = signal<number>(-1);
+  mode = signal<string>('');
   label = signal('');
   catgories = signal<Category[]>([]);
 
@@ -41,6 +42,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   update(data: Category) {
+    this.mode.set('update');
     data.id = this.id();
 
     this.categoryService.update(data.id, data).subscribe((res) => {
@@ -56,6 +58,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   edit(category: Category) {
+    this.mode.set('edit');
     let { id, label } = category;
 
     if (id) {
@@ -67,6 +70,7 @@ export class CategoriesComponent implements OnInit {
 
   delete(id: number) {
     if (!confirm('Are you sure to delete this item ?')) {
+      this.mode.set('delete');
       return;
     }
 

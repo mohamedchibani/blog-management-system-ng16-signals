@@ -21,7 +21,12 @@
     />
     <ul class="list-group">
       <li
-        [class.active]="index() == i"
+        [ngClass]="{
+          active: index() == i,
+          'list-group-item-warning': index() == i && mode() == 'edit',
+          'list-group-item-success': index() == i && mode() == 'update',
+          'list-group-item-danger': index() == i && mode() == 'delete',
+        }"
         class="list-group-item"
         *ngFor="let category of catgories(); let i = index"
         (click)="selected(i)"
