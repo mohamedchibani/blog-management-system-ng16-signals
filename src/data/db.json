@@ -6,11 +6,32 @@
     {
       "id": "a529",
       "label": "Solar Panels"
-    },
-    {
-      "id": "5e03",
-      "label": "Travel"
     }
   ],
-  "tags": []
+  "tags": [
+    {
+      "id": "266a",
+      "label": "Javascript"
+    },
+    {
+      "id": "b024",
+      "label": "Php"
+    },
+    {
+      "id": "c6e1",
+      "label": "Java"
+    },
+    {
+      "id": "96a2",
+      "label": "Python"
+    },
+    {
+      "id": "b4ed",
+      "label": "Go"
+    },
+    {
+      "id": "a2a1",
+      "label": "Swift"
+    }
+  ]
 }
