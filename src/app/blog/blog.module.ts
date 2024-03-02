@@ -19,6 +19,6 @@ import { CategoriesComponent } from './components/categories/categories.componen
     CategoriesComponent,
   ],
   imports: [CommonModule, HttpClientModule],
-  exports: [CategoriesComponent, TagsComponent],
+  exports: [CategoriesComponent, TagsComponent, ArticleCreateComponent],
 })
 export class BlogModule {}
